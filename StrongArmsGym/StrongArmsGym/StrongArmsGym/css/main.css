@@ -1,0 +1,33 @@
+
+.footer {
+	background-color: #333333;
+	color: #d2d3d4;
+	padding: 35px 0px 75px 0px;
+}
+
+.pad-lg {
+	padding: 25px;
+}
+
+.features .glyphicon {
+	font-size: 32px;
+}
+
+.features .glyphicon.glyphicon-apple, .glyphicon.glyphicon-ok{
+	color: green;
+}
+
+
+.well-lg {
+  padding: 30px;
+  border-radius: 6px;
+}
+
+.signin-form {
+	padding-top: 10px;
+}
+
+
+
+
+
