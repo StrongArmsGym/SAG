@@ -22,7 +22,7 @@ SECRET_KEY = '^$dnzqa+dho)###fkh$c+$&q70-taabe4asb@4_9!v1wejk^m$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 """ALLOWED_HOSTS = ['boldsheep.com']"""
@@ -87,5 +87,17 @@ STATIC_URL = '/static/'
 # Template location
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(BASE_DIR), "static", "templates")
+    os.path.join(os.path.dirname(BASE_DIR), "static", "templates"),
+    
 )
+
+if DEBUG:
+    MEDIA_URL = '/media/'
+    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static-only")
+    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
+    STATICFILES_DIRS = (
+        os.path.join(os.path.dirname(BASE_DIR), "static", "static"),
+    )
+
+
+
