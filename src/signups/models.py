@@ -6,6 +6,7 @@ from django.utils.encoding import smart_unicode
 class SignUp(models.Model):
 	first_name = models.CharField(max_length=120) #defaults to null=False, blank=False
 	last_name = models.CharField(max_length=120) #defaults to null=False, blank=False
+	username = models.CharField(max_length=30, null=False, blank=False) 
 	email = models.EmailField() #defaults to null=False, blank=False
 
 	password = models.CharField(max_length=50)

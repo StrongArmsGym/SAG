@@ -1,4 +1,4 @@
-{% extend 'base.html' %}
+{% extends 'base.html' %}
 
 {% block main %}
 
@@ -6,13 +6,15 @@
 				<div class="col-sm-6">
 					<h2>Where Iron sharpens Iron.</h2>
 					<p class="lead">Strong Arms Gym provides all the neccessary tools you need to reach Strength and become the Strongest you've ever been. Here's to a Stronger You.<p>
-
+				<a href="{% url 'aboutus' %}"
 				<button type='button' class="btn btn-lg btn-info">Take the Tour</button>
-				<button type='button' class="btn btn-lg btn-primary">Sign Up Today</button>
+				<a href="{% url 'signup' %}">
+				<button type='button' class="btn btn-lg btn-primary" >Sign Up Today</button>
+				</a>
 				
 				</div>
 				<div class="col-sm-6 hidden-xs">
-					<img class="pad-lg" src="images/StrongArmsGym.png" alt="Strong Arms Gym" />
+					<img class="pad-lg" src="/static/images/StrongArmsGym.png" alt="Strong Arms Gym" />
 				</div>
 			</div>
 			<div class="row features text-center">
