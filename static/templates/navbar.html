@@ -15,16 +15,16 @@
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
         <li><a href="{% url 'aboutus' %}">About<span class="sr-only">(current)</span></a></li>
-			<li><a href="{% url 'signup' %}">New Members</a></li>
+			<li><a href="{% url 'register' %}">New Members</a></li>
 			<li><a href="/">Hire a Trainer</a></li>
       </ul>>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        <li><a href="{% url 'register' %}">Sign Up</a></li>
         <li class="dropdown" id="menuLogin">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
             <div class="dropdown-menu" style="padding:17px;">           
-              {% include 'signin.html' %}
+            {% include 'signin.html' %}
             </div>
         </li>
       </ul>

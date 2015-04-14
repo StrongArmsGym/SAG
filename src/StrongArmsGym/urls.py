@@ -9,15 +9,12 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'signups.views.home', name='home'),
-
-    url(r'^login$', 'signups.views.login', name='login'),
-    url(r'^account$', 'signups.views.account_view', name='account_view'),
-    url(r'^logout$', 'signups.views.logout', name='logout'),
-    url(r'^logggedin$', 'signups.views.loggedin', name='loggedin'),
-    url(r'^invalid$', 'signups.views.invalid', name='invalid'),
-    
-
+   
     url(r'^signup$', 'signups.views.signup', name='signup'),
+    url(r'^register$', 'signups.views.register', name='register'),
+    url(r'^login$', 'StrongArmsGym.views.user_login', name='login'),
+    url(r'^restricted$', 'StrongArmsGym.views.restricted', name='restricted'),
+    url(r'^logout$', 'StrongArmsGym.views.user_logout', name='logout'),
     # url(r'^blog/', include('blog.urls')),
    	url(r'^thank-you/$', 'signups.views.thankyou', name='thankyou'),
    	url(r'^about-us/$', 'signups.views.aboutus', name='aboutus'),

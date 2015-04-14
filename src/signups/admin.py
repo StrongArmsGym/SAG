@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import SignUp
+from .models import UserProfile
 
 
 class SignUpAdmin(admin.ModelAdmin):
@@ -10,3 +11,4 @@ class SignUpAdmin(admin.ModelAdmin):
 
 
 admin.site.register(SignUp, SignUpAdmin)
+admin.site.register(UserProfile)
