@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'signups',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -92,6 +91,13 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(BASE_DIR), "static", "templates"),
     
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    
+)
+
+AUTH_PROFILE_MODULE = "forums.UserProfile"
 
 if DEBUG:
     MEDIA_URL = '/media/'

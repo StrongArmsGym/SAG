@@ -1,8 +1,11 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, render_to_response, RequestContext, HttpResponseRedirect, HttpResponse
+from django.utils.decorators import method_decorator
+from django.shortcuts import render, render_to_response, RequestContext, HttpResponseRedirect, HttpResponse, Http404, get_object_or_404
 from django.contrib import auth
 from django.contrib import messages
+from django.views.generic import View
+from signups.models import UserProfile
 from django.core.context_processors import csrf
 # Create your views here.
 
@@ -35,8 +38,6 @@ def user_login(request):
 		return render_to_response('login.html', {}, context)
 
 
-
-
 @login_required
 def restricted(request):
 	return HttpResponse("Since you're logged in, you can see this text!")
@@ -47,3 +48,17 @@ def user_logout(request):
 	logout(request)
 
 	return HttpResponseRedirect('/')
+
+
+class UserProfileView(View):
+	@method_decorator(login_required)
+	def get(self, request, user):
+		if request.user.username == user:
+			profile = get_object_or_404(UserProfile, user=request.user)
+			#return HttpResponseRedirect('/')
+			return render(request, 'profile.html', {'profile': profile})
+			#return render('/', {'profile' : profile})
+		else:
+			raise Http404
+
+	

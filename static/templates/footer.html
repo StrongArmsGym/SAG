@@ -10,8 +10,12 @@
 						<h4>Links</h4>
 						<ul class="list-unstyled">
 							<li><a href="{% url 'home' %}">Homebase</a></li>
-							<li><a href="{% url 'signup' %}">New Members</a></li>
-							<li><a href="/">Hire a Trainer</a></li>
+							<li><a href="{% url 'register' %}">New Members</a></li>
+							{% if user.is_authenticated %}
+      						<li><a href="/">Hire a Trainer</a></li>
+      						{% else %}
+							<li><a href="{% url 'login' %}">Hire a Trainer</a></li>
+      						{% endif %}
 							<li><a href="#">Equipment</a></li>
 						</ul>
 					</div>

@@ -4,26 +4,11 @@ from django.contrib import auth
 from django.contrib import messages
 from django.core.context_processors import csrf
 # Create your views here.
-from .forms import SignUpForm, UserForm, UserProfileForm
+from .forms import UserForm, UserProfileForm
 
 def home(request):
 
 	return render_to_response("main-landing.html", 
-							locals(),
-							context_instance=RequestContext(request))
-
-def signup(request):
-
-	form = SignUpForm(request.POST or None)
-
-	if form.is_valid():
-		save_it = form.save(commit=False)
-		save_it.save()
-		messages.success(request, 'Thank you for joining')
-		return HttpResponseRedirect('/thank-you/')
-		
-
-	return render_to_response("signup.html", 
 							locals(),
 							context_instance=RequestContext(request))
 
@@ -62,6 +47,17 @@ def register(request):
 
 			#update var, tell template registration was successful
 			registered = True
+
+			username = request.POST['username']
+			password = request.POST['password']
+
+			u = authenticate(username=username, password=password)
+			if u:
+				if u.is_active:
+					login(request, u)
+					return HttpResponseRedirect('@' + username)
+					#return render(request, 'profile.html', {'profile': profile})
+
 		else:
 			print user_form.errors, profile_form.errors
     #Not a HTTP POST, so we render our form using two ModelForm instances

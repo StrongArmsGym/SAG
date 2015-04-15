@@ -16,9 +16,30 @@
       <ul class="nav navbar-nav">
         <li><a href="{% url 'aboutus' %}">About<span class="sr-only">(current)</span></a></li>
 			<li><a href="{% url 'register' %}">New Members</a></li>
-			<li><a href="/">Hire a Trainer</a></li>
-      </ul>>
+      {% if user.is_authenticated %}
+      <li><a href="/">Hire a Trainer</a></li>
+      {% else %}
+			<li><a href="{% url 'login' %}">Hire a Trainer</a></li>
+      {% endif %}
+      </ul>
+      {% if user.is_authenticated %}
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" id="menuLogin">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{ user.username }}
+            {% if user.userprofile.picture %}
+            <img style="margin-left: 10px;" src="{{ user.userprofile.picture.url }}" width="25" height="25"/>
+            {% endif %}
+            </a>
+            <div class="dropdown-menu text-center" style="padding:17px;">
+              <a href="@{{ user.username}}">account</a>
+              <br/>
+              <a href="{% url 'logout' %}">logout</a>
+            </div>
+        </li>
+        
+      </ul>
 
+      {% else %}
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'register' %}">Sign Up</a></li>
         <li class="dropdown" id="menuLogin">
@@ -28,6 +49,7 @@
             </div>
         </li>
       </ul>
+      {% endif %}
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-->
 </nav>

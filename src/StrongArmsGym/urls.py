@@ -6,11 +6,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 admin.autodiscover()
 
+from .views import UserProfileView
+
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'signups.views.home', name='home'),
    
-    url(r'^signup$', 'signups.views.signup', name='signup'),
     url(r'^register$', 'signups.views.register', name='register'),
     url(r'^login$', 'StrongArmsGym.views.user_login', name='login'),
     url(r'^restricted$', 'StrongArmsGym.views.restricted', name='restricted'),
@@ -18,7 +19,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
    	url(r'^thank-you/$', 'signups.views.thankyou', name='thankyou'),
    	url(r'^about-us/$', 'signups.views.aboutus', name='aboutus'),
-
+    url(r'^@(?P<user>[\w-]+)$', UserProfileView.as_view(), name="user_profile_view"),
     url(r'^admin/', include(admin.site.urls)),
 )
 

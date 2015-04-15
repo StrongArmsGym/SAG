@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-2 col-md-8">
+	<h1 class="">{{ user.username }}</h1>
+	</div>
+	<div class="col-xs-10 col-xs-offset-2 col-md-4" >
+	{% if user.userprofile.picture %}
+	<img src="{{ user.userprofile.picture.url }}" id="profile-img"/>
+	{% else %}
+	<img src="/static/images/blank-profile-picture.jpg" id="profile-img"/>
+	{% endif %}
+	</div>	
+</div>
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-2">
+		<h2>Email: {{user.email }}</h2>
+		<a href="{{ user.userprofile.website }}"><h3>{{ user.userprofile.website }}</h3></a>
+	</div>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
