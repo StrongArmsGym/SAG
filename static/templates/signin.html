@@ -3,7 +3,7 @@
 	<p class="error">Sorry, that's not a valid username or password</p>
 {% endif %}
 
-<form class="form" id="formLogin" method="POST" action="{% url 'account_view' %}"> {% csrf_token %}
+<form class="form" id="formLogin" method="POST" action="{% url 'login' %}"> {% csrf_token %}
   	<label class="sr-only">Email address</label>
     <input name="username" id="username" type="text" placeholder="Username" class="form-control"> 
 
